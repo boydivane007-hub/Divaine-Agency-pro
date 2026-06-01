@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divaine Agency - Sites Web Pro Cameroun</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --noir: #121212; /* Charbon luxe au lieu de noir cave */
+  --noir-card: #1a1a1f; /* Cartes un peu plus claires */
+  --or: #d4af37;
+  --or-light: #e8c547;
+  --gris: #2a2a32;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+  background: var(--noir);
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding-bottom: 140px;
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(212,175,55,0.05) 0%, transparent 60%);
+}
+
+header {
+  text-align: center;
+  padding: 50px 20px 40px;
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  background: var(--noir-card);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--or);
+  border: 2px solid var(--or);
+  box-shadow: 0 0 35px rgba(212,175,55,0.25);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--or);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(212,175,55,0.3);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #b0b0b0; /* Gris clair au lieu de gris foncé */
+  font-weight: 400;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 25px 0 0;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--noir-card);
+  color: var(--or);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(212,175,55,0.4);
+}
+
+.section-title {
+  padding: 0 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 45px 0 20px;
+  color: var(--or);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card {
+  background: var(--noir-card);
+  color: #e0e0e0;
+  margin: 12px 20px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  border: 1px solid rgba(212,175,55,0.2);
+}
+
+.card:hover {
+  border-color: var(--or);
+  box-shadow: 0 0 25px rgba(212,175,55,0.18);
+  transform: translateY(-2px);
+  background: #202028; /* Légèrement plus clair au hover */
+}
+
+.card-info { flex: 1; }
+.card-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+  color: #ffffff; /* Blanc pur pour contraste */
+}
+.card-desc {
+  font-size: 0.8rem;
+  color: #b8b8b8; /* Gris clair lisible */
+}
+.card-right { text-align: right; }
+.prix {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--or);
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+.btn-ajouter {
+  background: transparent;
+  color: var(--or);
+  border: 1.5px solid var(--or);
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-ajouter:hover {
+  background: var(--or);
+  color: var(--noir);
+  box-shadow: 0 0 18px rgba(212,175,55,0.4);
+}
+
+/* PORTFOLIO */
+.portfolio-grid {
+  display: grid;
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.porto-card {
+  background: var(--noir-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.2);
+  transition: all 0.3s;
+  text-decoration: none;
+  display: block;
+}
+
+.porto-card:hover {
+  border-color: var(--or);
+  box-shadow: 0 0 30px rgba(212,175,55,0.22);
+  transform: translateY(-3px);
+}
+
+.porto-img {
+  width: 100%;
+  height: 200px;
+  background: var(--gris);
+  overflow: hidden;
+}
+
+.porto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+  filter: brightness(0.95);
+}
+
+.porto-card:hover .porto-img img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.porto-info {
+  padding: 20px;
+  color: #e0e0e0;
+}
+
+.porto-titre {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: var(--or);
+}
+
+.porto-type {
+  font-size: 0.85rem;
+  color: #b18b18b18;
+  margin-bottom: 10px;
+}
+
+.porto-link {
+  font-size: 0.8rem;
+  color: var(--or-light);
+  opacity: 0.8;
+}
+
+.total-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--noir-card);
+  padding: 22px 20px;
+  border-top: 2px solid var(--or);
+  z-index: 100;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+}
+
+.total-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  color: #e0e0e0;
+}
+
+.total-label {
+  font-size: 1rem;
+  color: #b0b0b0;
+}
+
+.total-montant {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--or);
+  text-shadow: 0 2px 8px rgba(212,175,55,0.3);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, var(--or) 0%, var(--or-light) 100%);
+  color: var(--noir);
+  border: none;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.45);
+}
+
+input[type="radio"], input[type="checkbox"] {
+  display: none;
+}
+
+.card:has(input:checked) {
+  border-color: var(--or);
+  background: #202028;
+  box-shadow: 0 0 22px rgba(212,175,55,0.15);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">DA</div>
+  <h1>DIVAINE AGENCY</h1>
+  <p class="subtitle">Sites web premium • Livraison 7-10 jours</p>
+  
+  <div class="tags">
+    <div class="tag">📱 Mobile First</div>
+    <div class="tag">⚡ Ultra Rapide</div>
+    <div class="tag">💰 Prix Cameroun</div>
+  </div>
+</header>
+
+<div class="section-title">✨ Choisis ton pack</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">One Page Pro</div>
+      <div class="card-desc">1 page • Design moderne • WhatsApp • 1 modif</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">40 000 FCFA</div>
+      <input type="radio" name="pack" data-prix="40000">
+      <button class="btn-ajouter">Sélectionner</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Vitrine Essentiel</div>
+      <div class="card-desc">3-5 pages • Formulaire • SEO de base</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">120 000 FCFA</div>
+      <input type="radio" name="pack" data-prix="120000">
+      <button class="btn-ajouter">Sélectionner</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Site Complet Pro</div>
+      <div class="card-desc">5-7 pages • Blog • SEO avancé</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">250 000 FCFA</div>
+      <input type="radio" name="pack" data-prix="250000">
+      <button class="btn-ajouter">Sélectionner</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Boutique E-commerce</div>
+      <div class="card-desc">20 produits • Mobile Money • Paiement</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">450 000 FCFA</div>
+      <input type="radio" name="pack" data-prix="450000">
+      <button class="btn-ajouter">Sélectionner</button>
+    </div>
+  </label>
+</div>
+
+<div class="section-title">✨ Options +</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Logo Premium</div>
+      <div class="card-desc">3 propositions • Fichiers source PNG/SVG</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">+20 000 FCFA</div>
+      <input type="checkbox" data-prix="20000">
+      <button class="btn-ajouter">Ajouter</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">SEO + Google 3 mois</div>
+      <div class="card-desc">Référencement local • Mots-clés</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">+80 000 FCFA</div>
+      <input type="checkbox" data-prix="80000">
+      <button class="btn-ajouter">Ajouter</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Nom de domaine 1 an</div>
+      <div class="card-desc">.com / .cm / .net</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">+12 000 FCFA</div>
+      <input type="checkbox" data-prix="12000">
+      <button class="btn-ajouter">Ajouter</button>
+    </div>
+  </label>
+</div>
+
+<div class="card">
+  <label style="width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+    <div class="card-info">
+      <div class="card-title">Hébergement rapide 1 an</div>
+      <div class="card-desc">SSL gratuit • Sauvegardes</div>
+    </div>
+    <div class="card-right">
+      <div class="prix">+15 000 FCFA</div>
+      <input type="checkbox" data-prix="15000">
+      <button class="btn-ajouter">Ajouter</button>
+    </div>
+  </label>
+</div>
+
+<div class="section-title">💼 Mes réalisations</div>
+
+<div class="portfolio-grid">
+  
+  <a href="https://ibb.co/HfWqqLP3" target="_blank" class="porto-card">
+    <div class="porto-img">
+      <img src="https://ibb.co/qY5h9stj" alt="Rad Sunshine">
+    </div>
+    <div class="porto-info">
+      <div class="porto-titre">Rad Sunshine</div>
+      <div class="porto-type">Site vitrine moderne</div>
+      <div class="porto-link">Voir le site ↗</div>
+    </div>
+  </a>
+
+  <a href="https://ibb.co/HpHzLk4d" target="_blank" class="porto-card">
+    <div class="porto-img">
+      <img src="chaja.jpg" alt="Adorable Chaja">
+    </div>
+    <div class="porto-info">
+      <div class="porto-titre">Adorable Chaja</div>
+      <div class="porto-type">Landing page premium</div>
+      <div class="porto-link">Voir le site ↗</div>
+    </div>
+  </a>
+
+  <a href="https://divaine-agency.netlify.app/#tarifs" target="_blank" class="porto-card">
+    <div class="porto-img">
+      <img src="divaine-v1.jpg" alt="Divaine Agency V1">
+    </div>
+    <div class="porto-info">
+      <div class="porto-titre">Divaine Agency V1</div>
+      <div class="porto-type">Site agence + tarifs</div>
+      <div class="porto-link">Voir le site ↗</div>
+    </div>
+  </a>
+
+</div>
+
+<div class="total-bar">
+  <div class="total-info">
+    <span class="total-label">Total :</span>
+    <span class="total-montant" id="total">0 FCFA</span>
+  </div>
+  <button class="btn-whatsapp" onclick="envoyerWhatsApp()">Commander sur WhatsApp</button>
+</div>
+
+<script>
+let total = 0;
+const inputs = document.querySelectorAll('input');
+const totalEl = document.getElementById('total');
+
+function updateTotal() {
+  total = 0;
+  inputs.forEach(input => {
+    if(input.checked) {
+      total += parseInt(input.dataset.prix);
+    }
+  });
+  totalEl.textContent = total.toLocaleString('fr-FR') + ' FCFA';
+}
+
+inputs.forEach(input => {
+  input.addEventListener('change', updateTotal);
+});
+
+document.querySelectorAll('.btn-ajouter').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const input = btn.parentElement.querySelector('input');
+    if(input.type === 'radio') {
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    }
+    input.checked = !input.checked;
+    updateTotal();
+  });
+});
+
+function envoyerWhatsApp() {
+  if(total === 0) {
+    alert('Choisis au moins un pack stp');
+    return;
+  }
+  
+  let msg = "Salut Divaine Agency!%0A%0AJe veux commander:%0A%0A";
+  inputs.forEach(input => {
+    if(input.checked) {
+      let label = input.closest('.card').querySelector('.card-title').textContent;
+      let prix = parseInt(input.dataset.prix).toLocaleString('fr-FR');
+      msg += "✓ " + label + " : " + prix + " FCFA%0A";
+    }
+  });
+  msg += "%0ATotal: " + total.toLocaleString('fr-FR') + " FCFA%0A%0AMerci!";
+  
+  let numero = "237671725245";
+  window.open("https://wa.me/" + numero + "?text=" + msg, "_blank");
+}
+</script>
+
+</body>
+</html>
